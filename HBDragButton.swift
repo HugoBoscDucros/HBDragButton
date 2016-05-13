@@ -23,7 +23,7 @@ class HBDragButton: UIView {
     var initalFrame:CGRect!
     var slideStyle = false
     var endStyle = ""
-    var maxAnimationDuration:Double = 1
+    var maxAnimationDuration:Double = 0.5
     
     
 // MARK: - Settings

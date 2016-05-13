@@ -156,6 +156,7 @@ SWIFT_CLASS("_TtC23HBDragButtonTestProject14ViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified label;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)viewDidAppear:(BOOL)animated;
 - (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
 - (void)dragButtonCompleteDragging:(HBDragButton * _Nonnull)dragButton;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;

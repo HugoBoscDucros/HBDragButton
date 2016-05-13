@@ -17,8 +17,7 @@ class ViewController: UIViewController, HBDragButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dragButton.delegate = self
-        self.dragButton.autoSet()
+        
         self.dragButton2.delegate = self
         self.dragButton2.slidableStyle()
         self.dragButton3.delegate = self
@@ -31,10 +30,13 @@ class ViewController: UIViewController, HBDragButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        //self.dragButton.layer.cornerRadius = 38//self.dragButton.frame.size.height/2
-//    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.dragButton.delegate = self
+        self.dragButton.autoSet()
+        //self.dragButton.translatesAutoresizingMaskIntoConstraints = true
+        //self.dragButton.layer.cornerRadius = 38//self.dragButton.frame.size.height/2
+    }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.dragButton.backToInitialFrame(true)
