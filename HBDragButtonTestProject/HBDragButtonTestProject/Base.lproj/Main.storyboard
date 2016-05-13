@@ -18,31 +18,89 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vf7-xe-z0t" customClass="HBDragButton" customModule="HBDragButtonTestProject" customModuleProvider="target">
-                                <rect key="frame" x="20" y="114" width="335" height="75"/>
+                                <rect key="frame" x="20" y="79" width="335" height="75"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="wDl-rZ-ATy">
                                         <rect key="frame" x="8" y="8" width="59" height="59"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="BJv-2m-c2m"/>
-                                    <constraint firstAttribute="width" constant="335" id="JYz-y5-Olv"/>
+                                    <constraint firstAttribute="height" constant="75" id="ZKk-H2-JgL"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="draggableAreaView" destination="wDl-rZ-ATy" id="k1l-qY-lvk"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGw-ix-lRS" customClass="HBDragButton" customModule="HBDragButtonTestProject" customModuleProvider="target">
+                                <rect key="frame" x="20" y="185" width="335" height="75"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="fYe-1B-6F2">
+                                        <rect key="frame" x="8" y="8" width="59" height="59"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="g1R-CO-K0N"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="draggableAreaView" destination="fYe-1B-6F2" id="vQc-E1-a6t"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGb-zE-GCI" customClass="HBDragButton" customModule="HBDragButtonTestProject" customModuleProvider="target">
+                                <rect key="frame" x="20" y="296" width="335" height="75"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="ACR-hY-MVO">
+                                        <rect key="frame" x="8" y="8" width="59" height="59"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="Iyy-jf-5Uc"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="draggableAreaView" destination="ACR-hY-MVO" id="zRk-Q7-fUR"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ob1-Q2-zrR">
+                                <rect key="frame" x="39" y="408" width="297" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="ro1-g2-GDO"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Let's drag a button !">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vf7-xe-z0t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PMn-7y-Q1C"/>
-                            <constraint firstItem="vf7-xe-z0t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="94" id="Ufk-KI-1kA"/>
+                            <constraint firstItem="pGw-ix-lRS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="0IR-Cp-8Cw"/>
+                            <constraint firstAttribute="trailing" secondItem="Ob1-Q2-zrR" secondAttribute="trailing" constant="39" id="5DE-A0-3i7"/>
+                            <constraint firstItem="vf7-xe-z0t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="8qy-tm-8A9"/>
+                            <constraint firstItem="vf7-xe-z0t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="59" id="8xt-ji-wHl"/>
+                            <constraint firstItem="Ob1-Q2-zrR" firstAttribute="top" secondItem="gGb-zE-GCI" secondAttribute="bottom" constant="37" id="GaM-xv-s0p"/>
+                            <constraint firstItem="Ob1-Q2-zrR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="39" id="Q2b-gN-YkD"/>
+                            <constraint firstAttribute="trailing" secondItem="pGw-ix-lRS" secondAttribute="trailing" constant="20" id="ZGA-G9-bP8"/>
+                            <constraint firstItem="gGb-zE-GCI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="n5K-3E-njQ"/>
+                            <constraint firstItem="pGw-ix-lRS" firstAttribute="top" secondItem="vf7-xe-z0t" secondAttribute="bottom" constant="31" id="uhk-Bh-ig0"/>
+                            <constraint firstAttribute="trailing" secondItem="vf7-xe-z0t" secondAttribute="trailing" constant="20" id="x0k-4D-DwO"/>
+                            <constraint firstItem="gGb-zE-GCI" firstAttribute="top" secondItem="pGw-ix-lRS" secondAttribute="bottom" constant="36" id="yfW-a4-Qam"/>
+                            <constraint firstAttribute="trailing" secondItem="gGb-zE-GCI" secondAttribute="trailing" constant="20" id="zDv-MZ-OIY"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="dragButton" destination="vf7-xe-z0t" id="l4M-8y-4zn"/>
+                        <outlet property="dragButton2" destination="pGw-ix-lRS" id="OkJ-ZX-41W"/>
+                        <outlet property="dragButton3" destination="gGb-zE-GCI" id="I8j-MT-cyf"/>
+                        <outlet property="label" destination="Ob1-Q2-zrR" id="10R-pO-eGs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

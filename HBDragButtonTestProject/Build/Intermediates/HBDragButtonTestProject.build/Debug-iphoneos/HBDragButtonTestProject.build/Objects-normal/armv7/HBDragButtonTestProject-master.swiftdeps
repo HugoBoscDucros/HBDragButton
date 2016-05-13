@@ -1,0 +1,7 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "327aac312d32e921e5261e44d7bb1083"
+build_time: [516470778, 845930000]
+inputs:
+  "/Users/PadamBus/Documents/Dev/HBDragButton/HBDragButtonTestProject/HBDragButtonTestProject/ViewController.swift": [516468873, 0]
+  "/Users/PadamBus/Documents/Dev/HBDragButton/HBDragButton.swift": [516470694, 0]
+  "/Users/PadamBus/Documents/Dev/HBDragButton/HBDragButtonTestProject/HBDragButtonTestProject/AppDelegate.swift": [516458896, 0]
