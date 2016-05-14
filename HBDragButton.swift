@@ -55,7 +55,7 @@ class HBDragButton: UIView {
             self.initalFrame = self.frame
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(HBDragButton.dragViewDragged))
             self.draggableAreaView.addGestureRecognizer(panGesture)
-            self.translatesAutoresizingMaskIntoConstraints = true
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HBDragButton.rotated), name: UIDeviceOrientationDidChangeNotification, object: nil)
         }
     }
     
@@ -75,13 +75,18 @@ class HBDragButton: UIView {
         if sender.state == .Began {
             self.translationX = 0
             self.isDragged = false
+            self.translatesAutoresizingMaskIntoConstraints = true
         } else if sender.state == .Ended {
             if !self.isDragged {
                 let iniWidth = self.initalFrame.size.width
                 let width = self.frame.width
                 UIView.animateWithDuration(Double((iniWidth - width)/(iniWidth - minWidth)) * self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
                     self.frame = self.initalFrame
-                    }, completion: nil)
+                    }, completion: { (finished) in
+                    if finished {
+                        self.translatesAutoresizingMaskIntoConstraints = false
+                    }
+                })
             }
         } else {
             if translation.x > 0 && self.frame.size.width > minWidth {
@@ -89,7 +94,11 @@ class HBDragButton: UIView {
                 self.translationX = translation.x
                 //print("width = \(self.frame.size.width)")
                 if self.frame.size.width - m >= minWidth {
-                    self.frame = CGRectMake(self.frame.origin.x + m, self.frame.origin.y, self.frame.size.width - m, self.frame.size.height)
+                    if self.frame.size.width - m > self.initalFrame.width {
+                        self.frame = self.initalFrame
+                    } else {
+                        self.frame = CGRectMake(self.frame.origin.x + m, self.frame.origin.y, self.frame.size.width - m, self.frame.size.height)
+                    }
                 } else {
                     self.frame = CGRectMake(minOriginX, self.frame.origin.y, minWidth, self.frame.size.height)
                 }
@@ -129,7 +138,11 @@ class HBDragButton: UIView {
                 let m = translation.x - self.translationX
                 self.translationX = translation.x
                 if self.draggableAreaView.frame.origin.x + m <= maxOriginX {
-                    self.draggableAreaView.frame = CGRectMake(self.draggableAreaView.frame.origin.x + m, self.draggableAreaView.frame.origin.y, self.draggableAreaView.frame.size.width, self.draggableAreaView.frame.size.height)
+                    if self.draggableAreaView.frame.origin.x + m < self.initalFrame.origin.x {
+                        self.draggableAreaView.frame = self.initalFrame
+                    } else {
+                        self.draggableAreaView.frame = CGRectMake(self.draggableAreaView.frame.origin.x + m, self.draggableAreaView.frame.origin.y, self.draggableAreaView.frame.size.width, self.draggableAreaView.frame.size.height)
+                    }
                 } else {
                     self.draggableAreaView.frame = CGRectMake(maxOriginX, self.draggableAreaView.frame.origin.y, self.draggableAreaView.frame.size.width, self.draggableAreaView.frame.size.height)
                 }
@@ -165,12 +178,20 @@ class HBDragButton: UIView {
                 if animated {
                     UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
                         self.frame = self.initalFrame
-                        }, completion: nil)
+                        }, completion: { (finished) in
+                            if finished {
+                                self.translatesAutoresizingMaskIntoConstraints = false
+                            }
+                    })
                 } else {
                     self.frame = self.initalFrame
                 }
             }
         }
+    }
+    
+    func rotated() {
+        self.initalFrame = self.frame
     }
     
      // Only override drawRect: if you perform custom drawing.

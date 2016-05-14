@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vf7-xe-z0t" customClass="HBDragButton" customModule="HBDragButtonTestProject" customModuleProvider="target">
-                                <rect key="frame" x="20" y="79" width="335" height="75"/>
+                                <rect key="frame" x="20" y="28" width="335" height="75"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="wDl-rZ-ATy">
                                         <rect key="frame" x="8" y="8" width="59" height="59"/>
@@ -33,7 +33,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGw-ix-lRS" customClass="HBDragButton" customModule="HBDragButtonTestProject" customModuleProvider="target">
-                                <rect key="frame" x="20" y="185" width="335" height="75"/>
+                                <rect key="frame" x="20" y="112" width="335" height="75"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="fYe-1B-6F2">
                                         <rect key="frame" x="8" y="8" width="59" height="59"/>
@@ -48,7 +48,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGb-zE-GCI" customClass="HBDragButton" customModule="HBDragButtonTestProject" customModuleProvider="target">
-                                <rect key="frame" x="20" y="296" width="335" height="75"/>
+                                <rect key="frame" x="20" y="195" width="335" height="75"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="ACR-hY-MVO">
                                         <rect key="frame" x="8" y="8" width="59" height="59"/>
@@ -62,8 +62,8 @@
                                     <outlet property="draggableAreaView" destination="ACR-hY-MVO" id="zRk-Q7-fUR"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ob1-Q2-zrR">
-                                <rect key="frame" x="39" y="408" width="297" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ob1-Q2-zrR">
+                                <rect key="frame" x="39" y="278" width="297" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ro1-g2-GDO"/>
                                 </constraints>
@@ -84,14 +84,14 @@
                             <constraint firstItem="pGw-ix-lRS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="0IR-Cp-8Cw"/>
                             <constraint firstAttribute="trailing" secondItem="Ob1-Q2-zrR" secondAttribute="trailing" constant="39" id="5DE-A0-3i7"/>
                             <constraint firstItem="vf7-xe-z0t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="8qy-tm-8A9"/>
-                            <constraint firstItem="vf7-xe-z0t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="59" id="8xt-ji-wHl"/>
+                            <constraint firstItem="vf7-xe-z0t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="8xt-ji-wHl"/>
                             <constraint firstItem="Ob1-Q2-zrR" firstAttribute="top" secondItem="gGb-zE-GCI" secondAttribute="bottom" constant="37" id="GaM-xv-s0p"/>
                             <constraint firstItem="Ob1-Q2-zrR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="39" id="Q2b-gN-YkD"/>
                             <constraint firstAttribute="trailing" secondItem="pGw-ix-lRS" secondAttribute="trailing" constant="20" id="ZGA-G9-bP8"/>
                             <constraint firstItem="gGb-zE-GCI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="n5K-3E-njQ"/>
-                            <constraint firstItem="pGw-ix-lRS" firstAttribute="top" secondItem="vf7-xe-z0t" secondAttribute="bottom" constant="31" id="uhk-Bh-ig0"/>
+                            <constraint firstItem="pGw-ix-lRS" firstAttribute="top" secondItem="vf7-xe-z0t" secondAttribute="bottom" constant="9" id="uhk-Bh-ig0"/>
                             <constraint firstAttribute="trailing" secondItem="vf7-xe-z0t" secondAttribute="trailing" constant="20" id="x0k-4D-DwO"/>
-                            <constraint firstItem="gGb-zE-GCI" firstAttribute="top" secondItem="pGw-ix-lRS" secondAttribute="bottom" constant="36" id="yfW-a4-Qam"/>
+                            <constraint firstItem="gGb-zE-GCI" firstAttribute="top" secondItem="pGw-ix-lRS" secondAttribute="bottom" constant="8" id="yfW-a4-Qam"/>
                             <constraint firstAttribute="trailing" secondItem="gGb-zE-GCI" secondAttribute="trailing" constant="20" id="zDv-MZ-OIY"/>
                         </constraints>
                     </view>
