@@ -17,25 +17,17 @@ class ViewController: UIViewController, HBDragButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.dragButton2.delegate = self
-        self.dragButton2.slidableStyle()
-        self.dragButton3.delegate = self
-        self.dragButton3.slidableStyle()
-        self.dragButton3.endStyle = "ComingBack"
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        self.dragButton.answerThePhoneStyle()
+        self.dragButton.set(.Drag, endingStyle: .BlockAndGoToCenter)
         self.dragButton.delegate = self
-        self.dragButton.autoSet()
-        //self.dragButton.translatesAutoresizingMaskIntoConstraints = true
-        //self.dragButton.layer.cornerRadius = 38//self.dragButton.frame.size.height/2
+        
+        self.dragButton2.answerThePhoneStyle()
+        self.dragButton2.set(.Slide, endingStyle: .Desapear)
+        self.dragButton2.delegate = self
+        
+        self.dragButton3.answerThePhoneStyle()
+        self.dragButton3.set(.Slide, endingStyle: .ComeBack)
+        self.dragButton3.delegate = self
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -50,5 +42,17 @@ class ViewController: UIViewController, HBDragButtonDelegate {
         self.label.textColor = UIColor.redColor()
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        self.dragButton.backToInitialFrame(false)
+    }
+    
+}
+
+extension UIView {
+    func answerThePhoneStyle() {
+        self.layer.cornerRadius = self.frame.size.height/2
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+    }
 }
 

@@ -62,7 +62,7 @@
                                     <outlet property="draggableAreaView" destination="ACR-hY-MVO" id="zRk-Q7-fUR"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ob1-Q2-zrR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ob1-Q2-zrR">
                                 <rect key="frame" x="39" y="278" width="297" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ro1-g2-GDO"/>
@@ -85,7 +85,7 @@
                             <constraint firstAttribute="trailing" secondItem="Ob1-Q2-zrR" secondAttribute="trailing" constant="39" id="5DE-A0-3i7"/>
                             <constraint firstItem="vf7-xe-z0t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="8qy-tm-8A9"/>
                             <constraint firstItem="vf7-xe-z0t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="8xt-ji-wHl"/>
-                            <constraint firstItem="Ob1-Q2-zrR" firstAttribute="top" secondItem="gGb-zE-GCI" secondAttribute="bottom" constant="37" id="GaM-xv-s0p"/>
+                            <constraint firstItem="Ob1-Q2-zrR" firstAttribute="top" secondItem="gGb-zE-GCI" secondAttribute="bottom" constant="8" id="GaM-xv-s0p"/>
                             <constraint firstItem="Ob1-Q2-zrR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="39" id="Q2b-gN-YkD"/>
                             <constraint firstAttribute="trailing" secondItem="pGw-ix-lRS" secondAttribute="trailing" constant="20" id="ZGA-G9-bP8"/>
                             <constraint firstItem="gGb-zE-GCI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="n5K-3E-njQ"/>
