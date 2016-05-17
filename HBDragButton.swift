@@ -130,65 +130,6 @@ class HBDragButton: UIView {
                 }
             }
         }
-        
-//        if sender.state == .Began {
-//            self.isDragged = false
-//            self.translatesAutoresizingMaskIntoConstraints = true
-//        } else if sender.state == .Ended {
-//            self.translationX = 0
-//            if !self.isDragged {
-//                let iniWidth = self.initalFrame.size.width
-//                let width = self.frame.width
-//                UIView.animateWithDuration(Double((iniWidth - width)/(iniWidth - minWidth)) * self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
-//                    self.frame = self.initalFrame
-//                    }, completion: { (finished) in
-//                    if finished {
-//                        self.translatesAutoresizingMaskIntoConstraints = false
-//                    }
-//                })
-//            }
-//        } else {
-//            if translation.x > 0 && self.frame.size.width > minWidth {
-//                let m = translation.x - self.translationX
-//                self.translationX = translation.x
-//                if self.frame.size.width - m >= minWidth {
-//                    if self.frame.size.width - m > self.initalFrame.width {
-//                        self.frame = self.initalFrame
-//                    } else {
-//                        self.frame = CGRectMake(self.frame.origin.x + m, self.frame.origin.y, self.frame.size.width - m, self.frame.size.height)
-//                    }
-//                } else {
-//                    self.frame = CGRectMake(minOriginX, self.frame.origin.y, minWidth, self.frame.size.height)
-//                }
-//                
-//                if self.frame.size.width <= minWidth {
-//                    if self.delegate != nil {
-//                        self.delegate!.dragButtonCompleteDragging(self)
-//                    }
-//                    print("Well Done !!!")
-//                    
-//                    //TODO make style modification & ending animation for complete dragging
-//                    //self.dragView.backgroundColor = padamRed
-//                    if self.endingStyle == .Block {
-//                        self.isDragged = true
-//                    } else if self.endingStyle == .BlockAndGoToCenter {
-//                        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {
-//                            self.center.x = UIScreen.mainScreen().bounds.width/2
-//                            }, completion: nil)
-//                    } else if self.endingStyle == .Desapear {
-//                        UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseIn, animations: {
-//                            self.alpha = 0
-//                            }, completion: { (finish) in
-//                            if finish {
-//                                self.frame = self.initalFrame
-//                            }
-//                        })
-//                    }
-//                    
-//                }
-//            }
-//        }
-//        print("start width = \(self.frame.size.width)")
     }
     
     @IBAction func dragViewSlided(sender: UIPanGestureRecognizer) {
@@ -336,10 +277,10 @@ class HBDragButton: UIView {
     
     
     
-     // Only override drawRect: if you perform custom drawing.
+/*   // Only override drawRect: if you perform custom drawing.
      // An empty implementation adversely affects performance during animation.
-//     override func drawRect(rect: CGRect) {
-//
-//     }
+     override func drawRect(rect: CGRect) {
+        //Do something
+     }*/
     
 }

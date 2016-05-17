@@ -27,7 +27,7 @@ class ViewController: UIViewController, HBDragButtonDelegate {
         self.dragButton2.set(.Slide, endingStyle: .Desapear)
         self.dragButton2.delegate = self
         
-        self.dragButton3.answerThePhoneStyle()
+        self.dragButton3.metalicStyle()
         self.dragButton3.set(.Slide, endingStyle: .ComeBack)
         self.dragButton3.delegate = self
     }
@@ -50,11 +50,26 @@ class ViewController: UIViewController, HBDragButtonDelegate {
     
 }
 
-extension UIView {
+extension HBDragButton {
     func answerThePhoneStyle() {
         self.layer.cornerRadius = self.frame.size.height/2
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.lightGrayColor().CGColor
+    }
+    
+    func metalicStyle() {
+        self.layer.cornerRadius = self.frame.size.height/2
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.backgroundColor = UIColor(patternImage: UIImage(named: "Metal")!)
+//        let stickOriginX = self.draggableAreaView.frame.origin.x + self.draggableAreaView.frame.size.width/2
+//        let stickOriginY = self.draggableAreaView.frame.origin.y + self.draggableAreaView.frame.size.height/2
+//        let stickWidth = self.frame.size.width - (stickOriginX * 2)
+//        let stickFrame = CGRectMake(stickOriginX, stickOriginY, stickWidth, 2)
+//        let stick = UIView(frame: stickFrame)
+//        stick.backgroundColor = UIColor.blackColor()
+//        //self.insertSubview(stick, aboveSubview: self.draggableAreaView)
+//        self.insertSubview(stick, belowSubview: self.draggableAreaView)
     }
 }
 
