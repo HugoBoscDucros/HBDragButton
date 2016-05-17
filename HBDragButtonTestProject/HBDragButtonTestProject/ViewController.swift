@@ -21,6 +21,8 @@ class ViewController: UIViewController, HBDragButtonDelegate {
         self.dragButton.set(.Drag, endingStyle: .BlockAndGoToCenter)
         self.dragButton.delegate = self
         
+        
+        
         self.dragButton2.answerThePhoneStyle()
         self.dragButton2.set(.Slide, endingStyle: .Desapear)
         self.dragButton2.delegate = self
