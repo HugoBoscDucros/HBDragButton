@@ -18,13 +18,11 @@ class ViewController: UIViewController, HBDragButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dragButton.answerThePhoneStyle()
-        self.dragButton.set(.Drag, endingStyle: .BlockAndGoToCenter)
+        self.dragButton.set(.Slide, endingStyle: .Desapear)
         self.dragButton.delegate = self
         
-        
-        
         self.dragButton2.answerThePhoneStyle()
-        self.dragButton2.set(.Slide, endingStyle: .Desapear)
+        self.dragButton2.set(.Drag, endingStyle: .BlockAndGoToCenter)
         self.dragButton2.delegate = self
         
         self.dragButton3.metalicStyle()
@@ -44,9 +42,10 @@ class ViewController: UIViewController, HBDragButtonDelegate {
         self.label.textColor = UIColor.redColor()
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        self.dragButton.backToInitialFrame(false)
-    }
+//    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+//        //self.dragButton.backToInitialFrame(false)
+//        self.dragButton2.translatesAutoresizingMaskIntoConstraints = false
+//    }
     
 }
 

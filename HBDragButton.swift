@@ -35,6 +35,10 @@ class HBDragButton: UIView {
     var endingAnimationDuration = 0.3
     var style:HBDragButtonStyle!
     var endingStyle:HBDragButtonEndingStyle!
+    var initialConstraints:[NSLayoutConstraint]!
+    var leftConstraint:NSLayoutConstraint!
+    var widthConstraint:NSLayoutConstraint!
+    var orientationDidChange = false
     
     
 // MARK: - Settings
@@ -42,15 +46,16 @@ class HBDragButton: UIView {
     func set(style:HBDragButtonStyle, endingStyle:HBDragButtonEndingStyle) {
         self.style = style
         self.endingStyle = endingStyle
-        let widthConstraint = NSLayoutConstraint(item: self.draggableAreaView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: self.draggableAreaView.frame.size.width)
+        self.widthConstraint = NSLayoutConstraint(item: self.draggableAreaView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: self.draggableAreaView.frame.size.width)
         let heightConstraint = NSLayoutConstraint(item: self.draggableAreaView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: self.draggableAreaView.frame.size.height)
-        let leftConstraint = NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: self.draggableAreaView, attribute: .Leading, multiplier: 1, constant: self.draggableAreaView.frame.origin.x)
+        self.leftConstraint = NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: self.draggableAreaView, attribute: .Leading, multiplier: 1, constant: self.draggableAreaView.frame.origin.x)
         let topConstraint = NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: self.draggableAreaView, attribute: .Top, multiplier: 1, constant: self.draggableAreaView.frame.origin.y)
-        self.draggableAreaView.addConstraint(widthConstraint)
+        self.draggableAreaView.addConstraint(self.widthConstraint)
         self.draggableAreaView.addConstraint(heightConstraint)
         self.addConstraint(topConstraint)
         if self.style == .Drag {
-            self.addConstraint(leftConstraint)
+            self.addConstraint(self.leftConstraint)
+            self.initialConstraints = self.constraints
             self.initalFrame = self.frame
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(HBDragButton.dragViewDragged))
             self.draggableAreaView.addGestureRecognizer(panGesture)
@@ -72,6 +77,7 @@ class HBDragButton: UIView {
         let minOriginX = self.initalFrame.origin.x + self.initalFrame.size.width - minWidth
         switch sender.state {
         case .Began:
+            self.initalFrame = self.frame
             self.isDragged = false
             self.translatesAutoresizingMaskIntoConstraints = true
         case .Ended:
@@ -79,6 +85,7 @@ class HBDragButton: UIView {
             if !self.isDragged {
                 let iniWidth = self.initalFrame.size.width
                 let width = self.frame.width
+                print("temps : \(Double((iniWidth - width)/(iniWidth - minWidth)) * self.maxAnimationDuration)sec")
                 UIView.animateWithDuration(Double((iniWidth - width)/(iniWidth - minWidth)) * self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
                     self.frame = self.initalFrame
                     }, completion: { (finished) in
@@ -116,7 +123,7 @@ class HBDragButton: UIView {
                             self.center.x = UIScreen.mainScreen().bounds.width/2
                             }, completion: nil)
                     case .Desapear:
-                        //self.isDragged = true
+                        self.isDragged = true
                         UIView.animateWithDuration(self.endingAnimationDuration, delay: 0, options: .CurveEaseIn, animations: {
                             self.alpha = 0
                             }, completion: { (finish) in
@@ -169,6 +176,7 @@ class HBDragButton: UIView {
                     case .Block:
                         self.isDragged = true
                     case .BlockAndGoToCenter:
+                        self.isDragged = true
                         UIView.animateWithDuration(self.endingAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
                             self.draggableAreaView.center.x = UIScreen.mainScreen().bounds.width/2
                             }, completion: nil)
@@ -194,25 +202,25 @@ class HBDragButton: UIView {
     }
     
     func backToInitialFrame(animate:Bool) {
-        if self.isDragged == true {
+        if self.isDragged {
             self.isDragged = false
             
-//            let endingStyle:HBDragButtonEndingStyle = self.endingStyle
-//            switch endingStyle {
-//            case .Block, .BlockAndGoToCenter :
-//                
-//                let style:HBDragButtonStyle = self.style
-//                switch style {
-//                case .Slide:
-//                    if animated {
-//                        UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
-//                            self.draggableAreaView.frame = self.initalFrame
-//                            }, completion: nil)
-//                    } else {
-//                        self.draggableAreaView.frame = self.initalFrame
-//                    }
-//                case .Drag:
-//                    if animated {
+            let endingStyle:HBDragButtonEndingStyle = self.endingStyle
+            switch endingStyle {
+            case .Block, .BlockAndGoToCenter :
+                
+                let style:HBDragButtonStyle = self.style
+                switch style {
+                case .Slide:
+                    if animate {
+                        UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
+                            self.draggableAreaView.frame = self.initalFrame
+                            }, completion: nil)
+                    } else {
+                        self.draggableAreaView.frame = self.initalFrame
+                    }
+                case .Drag:
+                    if animate {
 //                        UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
 //                            self.frame = self.initalFrame
 //                            }, completion: { (finished) in
@@ -220,17 +228,27 @@ class HBDragButton: UIView {
 //                                    self.translatesAutoresizingMaskIntoConstraints = false
 //                                }
 //                        })
-//                    } else {
-//                        self.frame = self.initalFrame
-//                    }
-//                }
-//            case.Desapear:
-//                UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseIn, animations: {
-//                    self.alpha = 1
-//                    }, completion: nil)
-//            default:
-//                break
-//            }
+                        self.removeConstraints(self.constraints)
+                        self.addConstraints(self.initialConstraints)
+                        self.translatesAutoresizingMaskIntoConstraints = false
+                        UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
+                            self.layoutIfNeeded()
+                            }, completion: { (finish) in
+                                if finish {
+                                    self.initalFrame = self.frame
+                                }
+                        })
+                    } else {
+                        self.frame = self.initalFrame
+                    }
+                }
+            case.Desapear:
+                UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseIn, animations: {
+                    self.alpha = 1
+                    }, completion: nil)
+            default:
+                break
+            }
             
             //
             
@@ -244,17 +262,45 @@ class HBDragButton: UIView {
                         self.draggableAreaView.frame = self.initalFrame
                     }
                 } else if self.style == .Drag {
+                    //if self.orientationDidChange {
+                        //self.orientationDidChange = false
                     if animate {
+                        //self.removeConstraints(self.constraints)
+                        //self.addConstraints(self.initialConstraints)
+                        self.translatesAutoresizingMaskIntoConstraints = false
                         UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
-                            self.frame = self.initalFrame
-                            }, completion: { (finished) in
-                                if finished {
-                                    self.translatesAutoresizingMaskIntoConstraints = false
+                            self.layoutIfNeeded()
+                            }, completion: { (finish) in
+                                if finish {
+                                    self.initalFrame = self.frame
                                 }
                         })
                     } else {
-                        self.frame = self.initalFrame
+                        self.translatesAutoresizingMaskIntoConstraints = false
                     }
+                        //self.removeConstraints(self.constraints)
+                        //self.addConstraints(self.initialConstraints)
+                        self.translatesAutoresizingMaskIntoConstraints = false
+                        UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
+                            self.layoutIfNeeded()
+                            }, completion: { (finish) in
+                            if finish {
+                                self.initalFrame = self.frame
+                            }
+                        })
+//                    } else {
+//                        if animate {
+//                            UIView.animateWithDuration(self.maxAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
+//                                self.frame = self.initalFrame
+//                                }, completion: { (finished) in
+//                                    if finished {
+//                                        self.translatesAutoresizingMaskIntoConstraints = false
+//                                    }
+//                            })
+//                        } else {
+//                            self.frame = self.initalFrame
+//                        }
+//                    }
                 }
             } else if self.endingStyle == .Desapear {
                 if animate {
@@ -271,8 +317,28 @@ class HBDragButton: UIView {
         }
     }
     
+    private func autodrag(animated:Bool) {
+        let minWidth = self.draggableAreaView.frame.origin.x * 2 + self.draggableAreaView.frame.size.width
+        let endX = self.frame.origin.x + (minWidth + self.frame.size.width)/2
+        let endFrame = CGRectMake(endX, self.frame.origin.y, minWidth, self.frame.size.height)
+        if animated {
+             UIView.animateWithDuration(self.endingAnimationDuration, delay: 0, options: .CurveEaseIn, animations: {
+                self.frame = endFrame
+                }, completion: nil)
+        } else {
+            self.frame = endFrame
+        }
+    }
+    
     func rotated() {
-        self.initalFrame = self.frame
+        //self.initalFrame = self.frame
+        //self.orientationDidChange = true
+        self.translatesAutoresizingMaskIntoConstraints = false
+        //self.layoutIfNeeded()
+//        if self.isDragged {
+//            
+//            self.autodrag(false)
+//        }
     }
     
     
