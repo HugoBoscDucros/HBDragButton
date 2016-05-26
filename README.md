@@ -5,7 +5,7 @@ A drag button is a good way to ensure the user is voluntary doing a sensible act
 
 ### Installation
 
-The only file needed to use this button is *HBDragButton.swift*.
+The only file needed to use this button is **HBDragButton.swift**.
 Just drag and drop it to your project folder.
 
 
@@ -33,17 +33,17 @@ you have different style of animation for the button.
 
 HBDragButtonStyle is an enum containing two values in this version. it define the animation during user's dragging.
 
-	- *.drag* : the button's width is decreasing with the draggableAreaView's dragging
-	- *.slide* : only the draggableAreaView is movving when user is dragging it
+	- >.drag : the button's width is decreasing with the draggableAreaView's dragging
+	- >.slide : only the draggableAreaView is movving when user is dragging it
 
 #### endingStyles
 
 HBDragButtonEndingStyle is an enum containing four values in this version. it define the animation happening when user dragging right the draggableAreaView to the right border of the dragButton. It's corresponding to the action callback.
 
-	-*.ComeBack*
-	-*.Block*
-	-*.BlogAndGoToCenter*
-	-*.Desapear*
+	- **.ComeBack**
+	- **.Block**
+	- **.BlogAndGoToCenter**
+	- **.Desapear**
 
 
 ### Action callBack
