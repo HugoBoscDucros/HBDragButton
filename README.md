@@ -32,12 +32,14 @@ you have different style of animation for the button.
 #### Styles
 
 HBDragButtonStyle is an enum containing two values in this version. it define the animation during user's dragging.
+
 	- *.drag* : the button's width is decreasing with the draggableAreaView's dragging
 	- *.slide* : only the draggableAreaView is movving when user is dragging it
 
 #### endingStyles
 
 HBDragButtonEndingStyle is an enum containing four values in this version. it define the animation happening when user dragging right the draggableAreaView to the right border of the dragButton. It's corresponding to the action callback.
+
 	-*.ComeBack*
 	-*.Block*
 	-*.BlogAndGoToCenter*
