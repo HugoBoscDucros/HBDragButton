@@ -123,6 +123,7 @@ SWIFT_CLASS("_TtC23HBDragButtonTestProject11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSLayoutConstraint;
 @class UIPanGestureRecognizer;
 @class NSCoder;
 
@@ -131,16 +132,25 @@ SWIFT_CLASS("_TtC23HBDragButtonTestProject12HBDragButton")
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified draggableAreaView;
 @property (nonatomic) CGFloat translationX;
 @property (nonatomic) BOOL isDragged;
-@property (nonatomic) BOOL slideStyle;
-@property (nonatomic, copy) NSString * _Nonnull endStyle;
+@property (nonatomic) BOOL isAnimating;
 @property (nonatomic) double maxAnimationDuration;
-- (void)autoSet;
-- (void)slidableStyle;
+@property (nonatomic) double endingAnimationDuration;
+@property (nonatomic, copy) NSArray<NSLayoutConstraint *> * _Null_unspecified initialConstraints;
+@property (nonatomic, strong) NSLayoutConstraint * _Null_unspecified leftConstraint;
+@property (nonatomic, strong) NSLayoutConstraint * _Null_unspecified widthConstraint;
+@property (nonatomic) BOOL orientationDidChange;
 - (IBAction)dragViewDragged:(UIPanGestureRecognizer * _Nonnull)sender;
 - (IBAction)dragViewSlided:(UIPanGestureRecognizer * _Nonnull)sender;
-- (void)backToInitialFrame:(BOOL)animated;
+- (void)backToInitialFrame:(BOOL)animate;
+- (void)rotated;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface HBDragButton (SWIFT_EXTENSION(HBDragButtonTestProject))
+- (void)answerThePhoneStyle;
+- (void)metalicStyle;
 @end
 
 @class UITouch;
@@ -155,8 +165,6 @@ SWIFT_CLASS("_TtC23HBDragButtonTestProject14ViewController")
 @property (nonatomic, weak) IBOutlet HBDragButton * _Null_unspecified dragButton3;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified label;
 - (void)viewDidLoad;
-- (void)didReceiveMemoryWarning;
-- (void)viewDidAppear:(BOOL)animated;
 - (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
 - (void)dragButtonCompleteDragging:(HBDragButton * _Nonnull)dragButton;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
