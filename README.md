@@ -22,9 +22,14 @@ Instanciate a HBDragButton has you do it for a UIView set his frame, and instanc
 
 ### Settings
 
-You need only one methode to set a HBDragButton. 
+You need only one methode to set a HBDragButton.
 ```sh
-HBDragButton.set(style:HBDragButtonStyle, endingStyle:HBDragButtonEndingStyle)
+func set(style:HBDragButtonStyle, endingStyle:HBDragButtonEndingStyle)
+```
+
+For exemple you can use it like that :
+```sh
+dragButton.set(HBDragButtonStyle.Slide, endingStyle:HBDragButtonEndingStyle.ComeBack)
 ```
 
 you have different style of animation for the button.
@@ -33,18 +38,20 @@ you have different style of animation for the button.
 
 HBDragButtonStyle is an enum containing two values in this version. it define the animation during user's dragging.
 
-	- >.drag : the button's width is decreasing with the draggableAreaView's dragging
-	- >.slide : only the draggableAreaView is movving when user is dragging it
+   - **.Drag** : the button's width is decreasing with the draggableAreaView's dragging
+   - **.Slide** : only the draggableAreaView is movving when user is dragging it
 
 #### endingStyles
 
 HBDragButtonEndingStyle is an enum containing four values in this version. it define the animation happening when user dragging right the draggableAreaView to the right border of the dragButton. It's corresponding to the action callback.
 
-	- **.ComeBack**
-	- **.Block**
-	- **.BlogAndGoToCenter**
-	- **.Desapear**
+   - **.ComeBack**
+   - **.Block**
+   - **.BlogAndGoToCenter**
+   - **.Desapear**
 
 
 ### Action callBack
+
+The action callBack is call when the user drag right the draggableAreaView to the dragButton right border. To use it, you have to define the dragButton *delegate*. This delegate has to respect **HBDragButtonDelegate** protocol.
 
