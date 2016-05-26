@@ -1,5 +1,5 @@
 # HBDragButton
-A draggable button easy to set in swift
+A draggable button easy to set in swift.
 A drag button is a good way to ensure the user is voluntary doing a sensible action whithout using a confirmation alert
 
 
